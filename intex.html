@@ -1,0 +1,143 @@
+var readlineSync = require("readline-sync");
+const chalk = require('chalk');
+
+if (!readlineSync.keyInYN(chalk.bgYellow.yellowBright.bold('Are you ready for the quiz?'))) {
+  process.exit();
+}
+var username = readlineSync.question(chalk.bgYellow.redBright.bold("Enter your name "))
+console.log(chalk.bold.yellow("Welcome " +username +" to The Naruto Quiz"))
+
+console.log(chalk.bold.green.bgBlackBright("You will start at Level 0"))
+
+var score = 0
+
+function quiz (question,answer)
+{
+  var useranswer = readlineSync.question(question)
+  if (useranswer === answer)
+  {
+    console.log(chalk.bold.green.bgBlackBright("You are right!! おめでとう"))
+    score = score+1
+    console.log("Your score right now is " +score)
+  }
+  else
+  {
+    console.log(chalk.bold.red.bgYellowBright("You are wrong!!ごめんなさい"))
+     console.log("Your score right now is " +score)
+  }
+}
+
+var question1 =
+{
+  question : "Who was Naruto's first teacher?",
+  answer : "Iruka Sensei"
+}
+var question2 =
+{
+  question : "Which famed clan was completely massacred?",
+  answer : "Uchiha"
+}
+var question3 =
+{
+  question : "How did Hidan die?",
+  answer : "He cannot die"
+}
+var question4 =
+{
+  question : "Which friend died during the Fourth Great War?",
+  answer : "Neji"
+}
+var question5 =
+{
+  question : "Which ninja cannot do ninjutsu and genjutsu?",
+  answer : "Rock Lee"
+}
+var question6 =
+{
+  question : "Who does Naruto eventually marry?",
+  answer : "Hinata"
+}
+var question7 =
+{
+  question : "What is Team Asuma's favorite food?",
+  answer : "BBQ"
+}
+var question8 =
+{
+  question : "Which trait is common in the Uzumaki clan?",
+  answer : "Red Hair"
+}
+var question9 =
+{
+  question : "Who gave their life to Gaara?",
+  answer : "Chiyo"
+}
+var question10 =
+{
+  question : "Who was the youngest Jonin?",
+  answer : "Kakashi"
+}
+
+var questions = [question1,question2,question3,question4,question5,question6,question7,question8,question9,question10]
+
+for(var i=0; i< questions.length; i++)
+{
+  if (score === 5)
+  {
+    console.log(chalk.bold.green.bgBlackBright("You have entered Level 1"))
+  }
+  else
+  {
+    console.log()
+  }
+  if (score === 8)
+  {
+    console.log(chalk.bold.green.bgBlackBright("You have entered Level 2"))
+  }
+  else
+  {
+    console.log()
+  }
+  var currentquestion = questions[i]
+  quiz(currentquestion.question, currentquestion.answer)
+}
+
+console.log(chalk.bold.underline.redBright.bgBlackBright("Your final score is " +score))
+
+console.log("-----------------------------------------")
+
+var highscore1 =
+{
+  Name : "Prasurjya Kashyap",
+  HScore : "9"
+}
+var highscore2 =
+{
+  Name : "Biswajit Roy",
+  HScore :"8"
+}
+
+var highscores = [highscore1,highscore2]
+
+for (var j=0; j<highscores.length; j++)
+{
+  var currenthighscore = highscores[j]
+  console.log(chalk.bold.green.bgBlackBright("Highest Scores in the game"))
+  console.log(currenthighscore.Name +" : " +currenthighscore.HScore )
+}
+if( score >= highscore1.HScore)
+{
+  console.log(chalk.bold.bgBlackBright.green("Now you have the highest score in the quiz!!!"))
+}
+else if( score >= highscore2.HScore)
+{
+  console.log(chalk.bold.bgBlackBrightt.green("Now you have the second highest score in the quiz!!!"))
+}
+else
+{
+  console.log(chalk.bold.bgYellowBright.red("Try again to beat the high score !!"))
+}
+
+console.log("-----------------------------------------")
+
+console.log(chalk.bold.bgYellowBright.redBright("Thank you for playing!!ありがとうございました"))
